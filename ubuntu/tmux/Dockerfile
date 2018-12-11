@@ -12,8 +12,7 @@ RUN apt-get update && apt-get -y install \
  && rm -rf /var/lib/apt/lists/*
 RUN groupadd -g 999 saj && \
     useradd -r -u 999 -g saj saj 
-RUN mkdir -p /home/saj/git
-RUN chown saj /home/saj/git
+RUN mkdir -p /home/saj/git && chown saj:saj /home/saj/git
 USER saj
 WORKDIR /home/saj/git
 ADD https://api.github.com/repos/tmux/tmux/git/refs/heads/master version.json
