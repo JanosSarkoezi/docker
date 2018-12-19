@@ -23,4 +23,7 @@ RUN git clone --branch master https://github.com/jromang/picochess.git
 WORKDIR /opt/picochess
 RUN sed -i s/python-chess==0.22.1/python-chess==0.23.1/g requirements.txt
 RUN pip3 install --upgrade -r requirements.txt
-# RUN python3 ./build/engines.py
+WORKDIR /opt/picochess/uci
+RUN sed -i "67s/file, stderr=DEVNULL/file, encoding='utf-8', stderr=DEVNULL/g" engine.py
+WORKDIR /opt/picochess
+RUN python3 ./build/engines.py && python3 ./build/books.py && python3 ./build/voices.py
