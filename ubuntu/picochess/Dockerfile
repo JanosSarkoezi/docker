@@ -7,8 +7,6 @@ RUN apt-get update && apt-get -y install \
     avahi-daemon \
     avahi-discover \
     libnss-mdns \
-    espeak \
-    festival \
     vorbis-tools \
     sox \
     python3-dev \
@@ -27,3 +25,5 @@ WORKDIR /opt/picochess/uci
 RUN sed -i "67s/file, stderr=DEVNULL/file, encoding='utf-8', stderr=DEVNULL/g" engine.py
 WORKDIR /opt/picochess
 RUN python3 ./build/engines.py && python3 ./build/books.py && python3 ./build/voices.py
+COPY picochess.ini /opt/picochess
+CMD ["python3", "picochess.py"]

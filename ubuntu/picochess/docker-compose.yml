@@ -1,0 +1,9 @@
+version: "3"
+services:
+  picochess:
+    image: picochess
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+      - "/dev/snd:/dev/snd"
+    ports:
+      - "8080:8080"
