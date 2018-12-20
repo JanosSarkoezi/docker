@@ -7,3 +7,5 @@ services:
       - "/dev/snd:/dev/snd"
     ports:
       - "8080:8080"
+    environment:
+      - ALSA_CARD=Speaker
