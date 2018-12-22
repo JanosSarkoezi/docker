@@ -1,0 +1,5 @@
+call plug#begin('~/.vim/bundle')
+
+Plug 'Valloric/YouCompleteMe'
+
+call plug#end()
