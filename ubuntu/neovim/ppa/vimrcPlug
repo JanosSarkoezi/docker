@@ -1,5 +1,5 @@
 call plug#begin('~/.vim/bundle')
 
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --java-completer' }
 
 call plug#end()
