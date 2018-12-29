@@ -11,14 +11,13 @@ RUN apt-get update && apt-get -y install \
     build-essential \
     --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
-RUN groupadd -g 999 saj && \
-    useradd -r -u 999 -g saj saj 
+ARG UID=999
+ARG GID=999
+RUN addgroup --gid ${GID} saj && \
+    adduser --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password --uid ${UID} --ingroup saj -shell /bin/bash saj 
 RUN mkdir -p /home/saj/.vim/autoload && \ 
     mkdir -p /home/saj/git && \ 
-    chown saj:saj /home/saj && \
-    chown saj:saj /home/saj/git && \
-    chown saj:saj /home/saj/.vim && \
-    chown saj:saj /home/saj/.vim/autoload
+    chown -R saj:saj /home/saj
 USER saj
 WORKDIR /home/saj/
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

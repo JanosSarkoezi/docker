@@ -1,13 +1,14 @@
 default: build
 
 build:
-	docker build -t vim:java .
+	docker build --build-arg UID=$(shell id -u) --build-arg GID=$(shell id -g) \
+		-t ubuntu:vim.java .
 	docker run -it \
 		--user=$(shell id -u):$(shell id -g) \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		vim:java
+		ubuntu:vim.java
 run:
 	docker run -it \
 		--user=$(shell id -u):$(shell id -g) \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		vim:java
+		ubuntu:vim.java
