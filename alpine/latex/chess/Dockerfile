@@ -292,8 +292,3 @@ RUN rm -fr /tmp/*
 
 USER saj
 WORKDIR /home/saj/git
-ADD https://api.github.com/repos/tmux/tmux/git/refs/heads/master version.json
-ADD https://api.github.com/repos/JanosSarkoezi/latex/git/refs/heads/master version.json
-RUN git clone https://github.com/JanosSarkoezi/latex.git
-WORKDIR /home/saj/git/latex
-RUN git checkout chess

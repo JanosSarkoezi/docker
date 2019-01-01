@@ -6,10 +6,11 @@ build:
 	docker run -it --rm \
 		--user=$(shell id -u):$(shell id -g) \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-v /home/saj/d/w/git:/home/saj/git \
 		alpine:texlive-chess
 run:
 	docker run -it --rm \
 		--user=$(shell id -u):$(shell id -g) \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-v /tmp:/tmp \
+		-v /home/saj/d/w/git:/home/saj/git \
 		alpine:texlive-chess
