@@ -1,4 +1,7 @@
 FROM ubuntu:18.04
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM xterm
+RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:neovim-ppa/unstable && \
