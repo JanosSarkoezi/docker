@@ -5,6 +5,8 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 RUN apt-get update && apt-get install -y \
     wget \
     vim \
+    git \
+    maven \
     libnotify4 \
     libgconf-2-4 \
     libnss3 \
@@ -28,9 +30,9 @@ RUN wget https://go.microsoft.com/fwlink/?LinkID=760868 -O vscode.deb && \
 WORKDIR /home/vscode
 
 USER vscode
-RUN code --extensions-dir 
-RUN code --install-extension vscjava.vscode-java-debug
-RUN code --install-extension vscjava.vscode-maven
+# RUN code --extensions-dir
+# RUN code --install-extension vscjava.vscode-java-debug
+# RUN code --install-extension vscjava.vscode-maven
 RUN mkdir -p git
 WORKDIR /home/vscode/git
 CMD code --verbose --disable-gpu
