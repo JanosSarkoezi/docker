@@ -18,9 +18,11 @@ USER saj
 WORKDIR /home/saj/
 RUN sudo ./apt-get.sh
 COPY --chown=saj:saj scripts/ /home/saj
-RUN ./env.sh
+# RUN chmod 744 /home/saj/*.sh
+RUN ./create_env.sh
 RUN ./tmux.sh
 RUN ./st.sh
 RUN ./mupdf.sh
-RUN ./ripgrep.sh
+# ENTRYPOINT [ "zsh", "-c", "source ~/.profile" ]
+ENTRYPOINT [ "zsh", "-l"]
 

@@ -6,7 +6,7 @@ build:
 	docker run -it --rm \
 		--user=$(shell id -u):$(shell id -g) \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		ubuntu:saj
+		ubuntu:saj /bin/zsh -l
 
 user:
 	docker run -it --rm \
