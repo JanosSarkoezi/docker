@@ -11,7 +11,9 @@ RUN apt-get update && apt-get -y install \
     pkg-config \
     build-essential \
     libevent-dev \
+    libgnutls28-dev \
     libncurses5-dev \
+    libtokyocabinet-dev \
  && rm -rf /var/lib/apt/lists/*
 ARG UID=999
 ARG GID=999
@@ -23,5 +25,11 @@ WORKDIR /home/saj/git
 ADD https://api.github.com/repos/muttmua/mutt/git/refs/heads/master version.json
 RUN git clone https://gitlab.com/muttmua/mutt
 WORKDIR /home/saj/git/mutt
-RUN ./prepare --enable-imap
-RUN ./configure && make
+RUN ./prepare
+RUN ./configure \
+     --enable-imap \
+     --enable-pop \
+     --enable-smtp \
+     --enable-hcache \
+     --with-gnutls \
+  && make
