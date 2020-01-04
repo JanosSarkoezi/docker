@@ -8,6 +8,7 @@ RUN apk add --update --no-cache \
     gcc \
     git \
     libc-dev \
+    libexecinfo-dev \
     libpng-dev \
     make \
     ncurses-dev \
