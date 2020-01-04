@@ -2,9 +2,10 @@ default: build
 
 build:
 	docker build -t crawl .
-	docker run --name crawl \
-		-d -p 80:80 \
-		-v /tmp/data/:/data \
+	docker run --name crawl -it --rm \
+		-p 80:80 \
+		-v /home/saj/dev/git/games/crawlm/data/:/data \
+		-v /home/saj/dev/git/games/crawlm/rcs/:/root/crawl/crawl-ref/source/rcs \
 		crawl
 
 user:
