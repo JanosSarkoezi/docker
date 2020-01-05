@@ -31,6 +31,7 @@ RUN pip install tornado==3.2.2
 RUN pip install pyyaml
 
 WORKDIR /root
+ADD https://api.github.com/repos/crawl/crawl/git/refs/heads/master version.json
 RUN git clone https://github.com/crawl/crawl
  
 WORKDIR /root/crawl
