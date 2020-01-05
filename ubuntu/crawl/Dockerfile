@@ -23,7 +23,8 @@ RUN apt-get update && \
       libsqlite3-dev \
       libz-dev \
       pkg-config \
-      ttf-dejavu-core && \
+      ttf-dejavu-core \
+      vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
