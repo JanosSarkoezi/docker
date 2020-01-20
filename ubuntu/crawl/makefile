@@ -15,6 +15,8 @@ user:
 		alpine:crawl
 
 run:
-	docker run -it --rm \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		alpine:crawl
+	docker run --name crawl -it --rm \
+		-p 80:80 \
+		-v /home/saj/dev/git/games/crawlm/data/:/data \
+		-v /home/saj/dev/git/games/crawlm/rcs/:/root/crawl/crawl-ref/source/rcs \
+		crawl
