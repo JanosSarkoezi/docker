@@ -12,19 +12,22 @@ build:
 		--privileged \
 		ubuntu:visual-studio-code
 
-user:
+java:
 	docker run -it --rm \
 		--user $(shell id -u) \
 		-e DISPLAY=$$DISPLAY \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-v /home/saj/dev/git:/home/vscode \
+		-v /home/saj/dev/java/ide/vscode:/home/vscode \
+		-v /home/saj/dev/git:/home/vscode/git \
 		--privileged \
 		ubuntu:visual-studio-code
 
-run:
+cpp:
 	docker run -it --rm \
+		--user $(shell id -u) \
+		-e DISPLAY=$$DISPLAY \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-v /home/saj/dev/git:/home/vscode \
-		-e DISPLAY:$$DISPLAY \
+		-v /home/saj/dev/cpp/ide/vscode:/home/vscode \
+		-v /home/saj/dev/git:/home/vscode/git \
 		--privileged \
 		ubuntu:visual-studio-code

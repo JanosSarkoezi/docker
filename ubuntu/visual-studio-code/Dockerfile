@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     git \
     maven \
+    cmake \
     libnotify4 \
     libgconf-2-4 \
     libnss3 \
