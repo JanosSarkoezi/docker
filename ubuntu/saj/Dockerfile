@@ -17,10 +17,3 @@ RUN chown -R saj:saj /home/saj/apt-get.sh && chmod 744 /home/saj/apt-get.sh
 USER saj
 WORKDIR /home/saj/
 RUN sudo ./apt-get.sh
-COPY --chown=saj:saj scripts/ /home/saj
-RUN ./env.sh
-RUN ./tmux.sh
-RUN ./st.sh
-RUN ./mupdf.sh
-RUN ./ripgrep.sh
-
