@@ -17,4 +17,4 @@ user:
 run:
 	docker run -it --rm \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		ubuntu:saj
+		ubuntu:saj /bin/zsh -l
