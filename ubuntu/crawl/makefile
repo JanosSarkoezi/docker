@@ -12,7 +12,7 @@ user:
 	docker run -it --rm \
 		--user=$(shell id -u):$(shell id -g) \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		alpine:crawl
+		crawl
 
 run:
 	docker run --name crawl -it --rm \

@@ -1,4 +1,4 @@
-FROM python:2
+FROM python:3
 MAINTAINER dididi <dfdgsdfg@gmail.com>
 
 ENV HOME /root
@@ -33,7 +33,7 @@ RUN pip install pyyaml
 
 WORKDIR /root
 ADD https://api.github.com/repos/crawl/crawl/git/refs/heads/master version.json
-RUN git clone https://github.com/crawl/crawl
+RUN git clone https://github.com/crawl/crawl --depth 1
  
 WORKDIR /root/crawl
 RUN git checkout ${CRAWL_VERSION}
@@ -41,19 +41,19 @@ RUN git submodule update --init
 
 WORKDIR /root/crawl/crawl-ref/source
 RUN make WEBTILES=y USE_DGAMELAUNCH=y
-RUN mkdir rcs
-
-WORKDIR /root/crawl/crawl-ref/source/webserver
-RUN sed -i '/bind_port/ s|8080|80|' config.py
-RUN sed -i '/password_db/ s|./webserver/passwd.db3|/data/passwd.db3|' config.py
-RUN sed -i '/filename/ s|#||' config.py
-RUN sed -i '/filename/ s|webtiles.log|/data/webtiles.log|' config.py
-# RUN sed -i '/crypt_algorithm/ s|broken|6|' config.py
-# RUN sed -i '/crypt_salt_length/ s|16|16|' config.py
-
-WORKDIR /root/crawl/crawl-ref/source
-CMD python webserver/server.py
-
-VOLUME ["/data"]
-EXPOSE 80 443
+# RUN mkdir rcs
+# 
+# WORKDIR /root/crawl/crawl-ref/source/webserver
+# RUN sed -i '/bind_port/ s|8080|80|' config.py
+# RUN sed -i '/password_db/ s|./webserver/passwd.db3|/data/passwd.db3|' config.py
+# RUN sed -i '/filename/ s|#||' config.py
+# RUN sed -i '/filename/ s|webtiles.log|/data/webtiles.log|' config.py
+# # RUN sed -i '/crypt_algorithm/ s|broken|6|' config.py
+# # RUN sed -i '/crypt_salt_length/ s|16|16|' config.py
+# 
+# WORKDIR /root/crawl/crawl-ref/source
+# CMD python webserver/server.py
+# 
+# VOLUME ["/data"]
+# EXPOSE 80 443
 

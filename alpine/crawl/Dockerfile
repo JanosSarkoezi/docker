@@ -32,4 +32,4 @@ RUN git clone https://github.com/crawl/crawl.git
 WORKDIR /home/saj/git/crawl
 RUN git submodule update --init
 WORKDIR /home/saj/git/crawl/crawl-ref/source
-# RUN make TILES=y
+RUN make -j8 TILES=y
