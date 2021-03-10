@@ -13,3 +13,4 @@ RUN addgroup --gid ${GID} saj && \
 RUN mkdir -p /home/saj/git && chown saj:saj /home/saj/git
 USER saj
 WORKDIR /home/saj/git
+WORKDIR /home/saj/sandbox
