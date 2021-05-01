@@ -6,7 +6,18 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 RUN apt-get update && apt-get -y install \
     kali-tools-top10 \
     neovim \
- && rm -rf /var/lib/apt/lists/*
+    && apt-get autoremove -y \
+    && apt-get autoclean -y \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get -y install \
+    kali-tools-top10 \
+    file \
+    bsdmainutils \
+    && apt-get autoremove -y \
+    && apt-get autoclean -y \
+    && rm -rf /var/lib/apt/lists/*
+
 ARG UID=999
 ARG GID=999
 RUN addgroup --gid ${GID} saj && \
